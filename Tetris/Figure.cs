@@ -8,7 +8,7 @@ namespace Tetris
 {
     public class Figure
     {
-      public  Point[] points = new Point[4];
+      protected  Point[] points = new Point[4];
 
         public void Draw()
         {
