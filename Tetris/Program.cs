@@ -11,12 +11,13 @@ namespace Tetris
         static void Main(string[] args)
         {
             Console.SetWindowSize(40, 30);
-            Console.SetBufferSize(40,30);
+            Console.SetBufferSize(40,30);                       
 
-           
-            Point p1 = new Point(2,3,'*');
-            
-            p1.Draw();
+            Square s = new Square(2, 4, '*');
+            s.Draw();
+
+            Stick stick = new Stick(1, 6, '*');
+            stick.Draw();
 
             Console.ReadLine();
         }
