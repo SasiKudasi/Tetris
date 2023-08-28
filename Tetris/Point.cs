@@ -18,11 +18,15 @@ namespace Tetris
 
             Console.Write(c);
         }
+
         public Point(int a, int b, char sym)
         {
             x = a;
             y = b; 
             c = sym;
         }
+
+       
+
     }
 }
