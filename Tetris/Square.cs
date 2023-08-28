@@ -2,9 +2,9 @@
 
 namespace Tetris
 {
-    public class Square
+    public class Square : Figure
     {
-        Point[] points = new Point[4];
+       
         public Square (int x, int y, char sym) 
         {
                        
@@ -16,12 +16,6 @@ namespace Tetris
 
         }
 
-        public void Draw()
-        {
-            foreach (Point p in points)
-            {
-                p.Draw();
-            }
-        }
+        
     }
 }
