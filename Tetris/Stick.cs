@@ -20,15 +20,40 @@ namespace Tetris
 
         public override void Rotate()
         {
-            foreach (Point p in points)
+            
+            
+                if (points[0].x == points[1].x)
+                {
+                    
+                    RotateHorisontal();
+                }
+                else
+                {
+                    RotateVertical();
+                }
+
+           
+
+        }
+               
+
+        public void RotateHorisontal()
+        {
+            for (int i = 0; i < points.Length; i++)
             {
-                points[0] = new Point(p.x, p.y, p.c);
-                points[1] = new Point(p.x+1, p.y , p.c);
-                points[2] = new Point(p.x+2, p.y , p.c);
-                points[3] = new Point(p.x+3, p.y , p.c);
+                points[i].y = points[0].y;
+                points[i].x = points[0].x + i;
             }
         }
 
+        public void RotateVertical()
+        {
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i].x = points[0].x;
+                points[i].y = points[0].y + i;
 
+            }
+        }
     }
 }

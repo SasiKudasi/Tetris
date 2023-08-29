@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    public class Figure 
+    public abstract class Figure 
     {
         
 
@@ -36,13 +36,7 @@ namespace Tetris
                 p.Moves(direction);
             }
         }
-        public virtual void Rotate()
-        {
-            foreach (Point p in points)
-            {
-                p.Rotate();
-            }
-        }
-
+        public abstract void Rotate();
+        
     }
 }

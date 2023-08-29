@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Tetris
+namespace Tetris 
 {
     internal class Program
     {
@@ -16,7 +16,7 @@ namespace Tetris
 
 
 
-            Square s = new Square(2, 4, '*');
+            Figure s = new Square(2, 4, '*');
             s.Draw();
             Thread.Sleep(1000);
             s.Hide();
@@ -29,14 +29,21 @@ namespace Tetris
 
 
 
-            Stick stick = new Stick(1, 6, '*');
+            Figure stick = new Stick(10, 6, '*');
+            stick.Draw();
+            Thread.Sleep(1000);
+            stick.Hide();            
+            stick.Rotate();
             stick.Draw();
             Thread.Sleep(1000);
             stick.Hide();
-            stick.Moves(Direction.Right);
+            Thread.Sleep(1000);
+            stick.Moves(Direction.Left);
             stick.Draw();
             Thread.Sleep(1000);
+
             stick.Hide();
+            
             stick.Rotate();
             stick.Draw();
 

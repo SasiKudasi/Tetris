@@ -44,11 +44,7 @@ namespace Tetris
 
         }
 
-        public virtual void Rotate()
-        {
-            x -= 1; 
-            y += 1;
-        }
+        
 
         public Point(int a, int b, char sym)
         {
