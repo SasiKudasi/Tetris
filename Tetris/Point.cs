@@ -19,6 +19,31 @@ namespace Tetris
             Console.Write(c);
         }
 
+        internal void Moves(Direction direction)
+        {
+            switch(direction)
+            {
+                case Direction.Down:
+                    
+                    y += 5;
+                    break;
+                case Direction.Left: 
+                    x -= 5;
+                    break;
+                case Direction.Right:
+                    x += 5;
+                    break;
+
+            }
+        }
+
+        internal void Hide()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(" ");           
+
+        }
+
         public Point(int a, int b, char sym)
         {
             x = a;
@@ -26,6 +51,7 @@ namespace Tetris
             c = sym;
         }
 
+        public Point() { }
        
 
     }
