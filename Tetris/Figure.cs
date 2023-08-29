@@ -36,5 +36,13 @@ namespace Tetris
                 p.Moves(direction);
             }
         }
+        public virtual void Rotate()
+        {
+            foreach (Point p in points)
+            {
+                p.Rotate();
+            }
+        }
+
     }
 }
