@@ -13,11 +13,31 @@ namespace Tetris
         {
             Console.SetWindowSize(40, 30);
             Console.SetBufferSize(40,30);
-
             FigureGenerator figureGenerator = new FigureGenerator(20, 0, '*');
 
-            Figure s = figureGenerator.Generate();  
-            
+            Figure figure;
+
+           
+
+
+            while (true)
+            {
+                figure = figureGenerator.Generate();
+                figure.Draw();
+
+
+                for (int i = 0; i < 7; i++)
+                {
+                    Thread.Sleep(500);
+                    figure.Hide();
+                    figure.Moves(Direction.Down);
+                    figure.Draw();
+                    Thread.Sleep(500);
+                }
+
+
+            }
+                    
             
             Console.ReadLine();
         }

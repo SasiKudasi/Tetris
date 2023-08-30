@@ -25,13 +25,13 @@ namespace Tetris
             {
                 case Direction.Down:
                     
-                    y += 5;
+                    y += 3;
                     break;
                 case Direction.Left: 
-                    x -= 5;
+                    x -= 3;
                     break;
                 case Direction.Right:
-                    x += 5;
+                    x += 3;
                     break;
 
             }

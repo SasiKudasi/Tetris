@@ -19,7 +19,7 @@ namespace Tetris
             _c = c;
         }
 
-        
+       
 
         public Figure Generate()
         {
@@ -27,32 +27,13 @@ namespace Tetris
             {
                 _figure = new Square(_x, _y, _c);
                
-                for (int i = 0; i<5; i++)
-                {
-                    
-                    _figure.Draw();
-                    Thread.Sleep(1000);
-                    _figure.Hide();
-                    _figure.Moves(Direction.Down);
-                    _figure.Draw();
-                    Thread.Sleep(1000);
-                }
+                
                 return _figure;
 
             }
             else
             {
                 _figure = new Stick(_x, _y, _c);
-
-                for (int i = 0; i < 5; i++)
-                {
-                    _figure.Draw();
-                    Thread.Sleep(1000);
-                    _figure.Hide();
-                    _figure.Moves(Direction.Down);
-                    _figure.Draw();
-                    Thread.Sleep(1000);
-                }
                 return _figure;
             }
         }
