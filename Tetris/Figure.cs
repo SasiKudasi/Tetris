@@ -23,18 +23,22 @@ namespace Tetris
 
         public void Hide()
         {
+            
             foreach(Point p in points)
             {
                 p.Hide();
             }
+            
         }
 
         public void Moves (Direction direction)
         {
-            foreach(Point p in points)
+            Hide();
+            foreach (Point p in points)
             {
                 p.Moves(direction);
             }
+            Draw();
         }
         public abstract void Rotate();
 

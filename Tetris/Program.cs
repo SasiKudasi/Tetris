@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,33 +16,35 @@ namespace Tetris
             Console.SetBufferSize(40,30);
             FigureGenerator figureGenerator = new FigureGenerator(20, 0, '*');
 
-            Figure figure;
-
-           
-
+            Figure currentFigure = figureGenerator.Generate();
+                      
 
             while (true)
             {
-                figure = figureGenerator.Generate();
-                figure.Draw();
-
-
-                for (int i = 0; i < 7; i++)
+                if(Console.KeyAvailable)
                 {
-                    Thread.Sleep(500);
-                    figure.Hide();
-                    figure.Moves(Direction.Down);
-                    figure.Draw();
-                    Thread.Sleep(500);
+                   var key = Console.ReadKey();
+                   HandleKey(currentFigure, key);
                 }
 
-
-            }
-                    
-            
-            Console.ReadLine();
+            }                                          
         }
 
+        private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key)
+        {
+           switch( key.Key)
+            {
+                case ConsoleKey.LeftArrow:
+                    currentFigure.Moves(Direction.Left);
+                    break;
+                case ConsoleKey.RightArrow:
+                    currentFigure.Moves(Direction.Right);
+                    break;
+                case ConsoleKey.DownArrow:
+                    currentFigure.Moves(Direction.Down);
+                    break;
+            }
+        }
     }
 
 }
