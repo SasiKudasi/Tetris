@@ -9,6 +9,7 @@ namespace Tetris
     public class Stick : Figure
     {
       
+        public Stick() { }
 
         public Stick(int x, int y, char sym) 
         {
@@ -30,10 +31,7 @@ namespace Tetris
                 else
                 {
                     RotateVertical();
-                }
-
-           
-
+                }                         
         }
                
 

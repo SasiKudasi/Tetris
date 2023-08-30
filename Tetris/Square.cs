@@ -5,7 +5,7 @@ namespace Tetris
 {
     public class Square : Figure
     {
-       
+       public Square() { }
         public Square (int x, int y, char sym) 
         {
                        
