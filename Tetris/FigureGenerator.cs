@@ -25,10 +25,8 @@ namespace Tetris
         {
             if( _random.Next(0, 2) == 0)
             {
-                _figure = new Square(_x, _y, _c);
-               
-                
-                return _figure;
+                _figure = new Square(_x, _y, _c);             
+                                return _figure;
 
             }
             else

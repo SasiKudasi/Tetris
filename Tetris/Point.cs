@@ -12,25 +12,30 @@ namespace Tetris
        public int y;
        public char c;
 
-      public  void Draw()
-        {
-            Console.SetCursorPosition(x, y);
+       
 
+        public  void Draw()
+        {
+            
+            Console.SetCursorPosition(x, y);
             Console.Write(c);
+            Console.SetCursorPosition(0, 0);
+            
         }
 
-        internal void Moves(Direction direction)
+        internal void Move(Direction dir)
         {
-            switch(direction)
+            switch(dir)
             {
-                case Direction.Down:
-                    
+                case Direction.Down:                                        
                     y += 3;
                     break;
-                case Direction.Left: 
+                case Direction.Left:
+                    
                     x -= 3;
                     break;
                 case Direction.Right:
+                    
                     x += 3;
                     break;
 
@@ -39,12 +44,10 @@ namespace Tetris
 
         internal void Hide()
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(" ");           
-
+                Console.SetCursorPosition(x, y);
+                Console.Write(" ");
         }
-
-        
+                
 
         public Point(int a, int b, char sym)
         {
@@ -54,7 +57,12 @@ namespace Tetris
         }
 
         public Point() { }
-       
 
+        public Point(Point p)
+        {
+            x = p.x;
+            y = p.y;    
+            c = p.c;    
+        }
     }
 }

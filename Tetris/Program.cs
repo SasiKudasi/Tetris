@@ -17,6 +17,8 @@ namespace Tetris
             FigureGenerator figureGenerator = new FigureGenerator(20, 0, '*');
 
             Figure currentFigure = figureGenerator.Generate();
+
+            
                       
 
             while (true)
@@ -24,24 +26,32 @@ namespace Tetris
                 if(Console.KeyAvailable)
                 {
                    var key = Console.ReadKey();
-                   HandleKey(currentFigure, key);
+                   HandleKey(currentFigure, key);                 
+
                 }
 
             }                                          
         }
+
+       
 
         private static void HandleKey(Figure currentFigure, ConsoleKeyInfo key)
         {
            switch( key.Key)
             {
                 case ConsoleKey.LeftArrow:
-                    currentFigure.Moves(Direction.Left);
+                    currentFigure.TryMove(Direction.Left);
                     break;
                 case ConsoleKey.RightArrow:
-                    currentFigure.Moves(Direction.Right);
+                    currentFigure.TryMove(Direction.Right);
                     break;
                 case ConsoleKey.DownArrow:
-                    currentFigure.Moves(Direction.Down);
+                    currentFigure.TryMove(Direction.Down);
+                    break;
+                case ConsoleKey.Spacebar:
+                    
+                    currentFigure.TryRotate();
+                    
                     break;
             }
         }
