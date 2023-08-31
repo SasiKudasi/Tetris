@@ -9,9 +9,8 @@ namespace Tetris
         private int _y;
         private char _c;
 
-        private Figure _figure;
+        private Random _rand = new Random();
 
-        private Random _random = new Random();
         public FigureGenerator(int x, int y, char c)
         {
             _x = x;
@@ -19,21 +18,13 @@ namespace Tetris
             _c = c;
         }
 
-       
-
-        public Figure Generate()
+        public Figure GetNewFigure()
         {
-            if( _random.Next(0, 2) == 0)
-            {
-                _figure = new Square(_x, _y, _c);             
-                                return _figure;
-
-            }
+            if (_rand.Next(0, 2) == 0)
+                return new Square(_x, _y, _c);
             else
-            {
-                _figure = new Stick(_x, _y, _c);
-                return _figure;
-            }
+                return new Stick(_x, _y, _c);
         }
+    
     }
 }
