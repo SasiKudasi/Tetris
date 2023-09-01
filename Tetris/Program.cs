@@ -20,7 +20,7 @@ namespace Tetris
             Console.SetWindowSize(Field.Widht, Field.Height);
             Console.SetBufferSize(Field.Widht, Field.Height);
             
-            generator = new FigureGenerator(10, 0, '*');
+            generator = new FigureGenerator(Field.Widht/2, 0, Drawer.DEFAULT_SYMBOL);
             currentFigure = generator.GetNewFigure();
 
 
@@ -39,12 +39,15 @@ namespace Tetris
             }                                          
         }
 
+       
+
         public static bool ProcessResult(Result result, ref Figure currentFigure)
         {
             if (result == Result.HEAP_STRIKE || result == Result.DOWN_BORDER_STRIKE)
             {
 
                 Field.AddFigure(currentFigure);
+                Field.TryDeleteLines();
                 currentFigure = generator.GetNewFigure();
                 return true;
             }

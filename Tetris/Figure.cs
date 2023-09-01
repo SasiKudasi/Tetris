@@ -11,8 +11,9 @@ namespace Tetris
     {
         const int LENGHT = 4;
 
+     
       public  Point[] Points = new Point[LENGHT];
-
+    
         public void Draw()
         {
             foreach (Point p in Points)
@@ -58,14 +59,13 @@ namespace Tetris
             Draw();
             return result;
         }
+       
+
 
         public Result VerityPosition(Point[] pList)
         {
             foreach (var p in pList)
-            {
-                
-
-
+            {              
                 if (p.Y >= Field.Height)
                 {
                     return Result.DOWN_BORDER_STRIKE;
@@ -81,6 +81,9 @@ namespace Tetris
             }
             return Result.SUCCESS;
         }
+
+
+     
 
                                    
 
