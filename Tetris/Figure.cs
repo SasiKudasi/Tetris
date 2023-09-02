@@ -31,83 +31,85 @@ namespace Tetris
             }            
         }
 
-       
+
 
         internal Result TryMove(Direction dir)
         {
             Hide();
-            var clone = Clone();
-            Move(clone, dir);
-            var result = VerityPosition(clone);
 
+            Move(dir);
 
-            if (result == Result.SUCCESS )
-                Points = clone;
+            var result = VerityPosition();
+            if (result != Result.SUCCESS)
+                Move(Reverse(dir));
+
             Draw();
             return result;
+        }
+
+
+        private Direction Reverse(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.LEFT:
+                    return Direction.RIGHT;
+                case Direction.RIGHT:
+                    return Direction.LEFT;
+                case Direction.DOWN:
+                    return Direction.UP;
+                case Direction.UP:
+                    return Direction.DOWN;
+            }
+            return dir;
         }
 
         internal Result TryRotate()
         {
             Hide();
-            var clone = Clone();
-            Rotate(clone);
-            var result = VerityPosition(clone);
-            if (result == Result.SUCCESS)
-                Points = clone;
+            Rotate();
+
+            var result = VerityPosition();
+            if (result != Result.SUCCESS)
+                Rotate();
 
             Draw();
             return result;
         }
-       
 
 
-        public Result VerityPosition(Point[] pList)
+
+
+
+        private Result VerityPosition()
         {
-            foreach (var p in pList)
-            {              
+            foreach (var p in Points)
+            {
                 if (p.Y >= Field.Height)
-                {
                     return Result.DOWN_BORDER_STRIKE;
-                }
+
                 if (p.X >= Field.Widht || p.X < 0 || p.Y < 0)
-                {
                     return Result.BORDER_STRIKE;
-                }
+
                 if (Field.CheckStrike(p))
-                {
                     return Result.HEAP_STRIKE;
-                }
             }
             return Result.SUCCESS;
         }
+               
 
-
-     
-
-                                   
-
-        public Point[] Clone()
+        public void Move( Direction dir)
         {
-            var newPoints = new Point[LENGHT];
-            for (int i = 0; i < LENGHT; i++)
-            {
-                newPoints[i] = new Point(Points[i]);
-            }
-            return newPoints;
-        }
-
-        public void Move(Point[] pList, Direction dir)
-        {
-            foreach (var p in pList)
+            foreach (var p in Points)
             {
                 p.Move(dir);
             }
         }
+        public abstract void Rotate();
 
-        public abstract void Rotate(Point[] pList);
-        
-
-        
+        internal bool IsOnTop()
+        {
+           return Points[0].Y == 0;
+        }
     }
 }

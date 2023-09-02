@@ -8,16 +8,15 @@ namespace Tetris
 {
     static public class Field
     {
-       public static int _widht = 20;
-        public static int _height = 10;
+       public static int _widht = 30;
+        public static int _height = 20;
 
         public static int Widht
         {
             get { return _widht; }
             set { 
                 _widht = value;
-                Console.SetWindowSize(value, Field.Height);
-                Console.SetBufferSize(value, Field.Height);
+                
             }
         }
         public static int Height
@@ -26,8 +25,7 @@ namespace Tetris
             set
             {
                 _widht = value;
-                Console.SetWindowSize(Field.Widht, value);
-                Console.SetBufferSize(Field.Widht, value);
+                
             }
         }
        
@@ -74,6 +72,24 @@ namespace Tetris
             }
         }
 
+        public static void GameOver()
+        {
+            for (int j = 0; j < Height; j++)
+            {
+                int counter = 0;
+
+                for (int i = 0; i < Height; i++)
+                {
+                    if (_heap[i][j])
+                        counter++;
+                }
+                if (counter == Height)
+                {
+                    Console.WriteLine("GameOver");
+                }
+            }
+        }
+
         private static void Redraw()
         {
             for (int j = 0; j < Height; j++)
@@ -81,12 +97,15 @@ namespace Tetris
                 for (int i = 0; i < Widht; i++)
                 {
                     if (_heap[j][i])
-                        Drawer.DrawPoint(i, j);
+                        DrowerProvider.Drawer.DrawPoint(i, j);
+                        
                     else
-                        Drawer.HidePoint(i, j);
+                        DrowerProvider.Drawer.HidePoint(i, j);
                 }
             }
         }
+
+
 
         private static void DeleteLine(int line)
         {

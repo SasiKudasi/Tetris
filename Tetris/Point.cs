@@ -14,9 +14,7 @@ namespace Tetris
 
         public void Draw()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(C);
-            Console.SetCursorPosition(0, 0);
+            DrowerProvider.Drawer.DrawPoint(X, Y);
         }
 
         public Point(Point p)
@@ -45,14 +43,16 @@ namespace Tetris
                 case Direction.RIGHT:
                     X += 1;
                     break;
-               
+                case Direction.UP:
+                    Y -= 1;
+                    break;
+
             }
         }
 
         internal void Hide()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.Write(" ");
+            DrowerProvider.Drawer.HidePoint(X, Y);  
         }
 
         public Point() { }

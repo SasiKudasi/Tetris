@@ -11,11 +11,11 @@ namespace Tetris
 
         private Random _rand = new Random();
 
-        public FigureGenerator(int x, int y, char c)
+        public FigureGenerator(int x, int y)
         {
             _x = x;
             _y = y;
-            _c = c;
+           
         }
 
         public Figure GetNewFigure()
@@ -23,7 +23,7 @@ namespace Tetris
             if (_rand.Next(0, 2) == 0)
                 return new Square(_x, _y, _c);
             else
-                return new Stick(_x, _y, _c);
+                return new Stick(_x, _y , _c);
         }
     
     }
